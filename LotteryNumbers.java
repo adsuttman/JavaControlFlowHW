@@ -22,16 +22,15 @@ public class LotteryNumbers {
 				int rand = promptInt("Enter a random number between 1 and 50:", 1, 50);
 				
 				//create constants for the maximum we want our randomly generated numbers to be
-				//add one so that when we use % later it keeps the number within the range we want
-				int RAND_MAX = 65 + 1;
-				int BALL_MAX = 75 + 1;
+				int RAND_MAX = 65;
+				int BALL_MAX = 75;
 				
 				//generates a random integer between 10 and 20 (or it should, I think, probably)
 				int rand1 = (int)Math.ceil((Math.random() + 1) * 10);
 				int rand2 = (int)Math.ceil((Math.random() + 1) * 10);
 				
 				//calculate the magic ball number
-				int ball = (lucky * rand1) % BALL_MAX;
+				int ball = ((lucky * rand1) % BALL_MAX) + 1;
 				
 				// create an array to hold the 5 random numbers
 //				int[] randomNums = new int[5];
@@ -44,15 +43,15 @@ public class LotteryNumbers {
 				//or we can use a sorted set to remove duplicates and sort
 				Set<Integer> randSet = new TreeSet<>();
 				try {
-					randSet.add(pet.charAt(2) % RAND_MAX);
+					randSet.add((pet.charAt(2) % RAND_MAX) + 1);
 				} catch (StringIndexOutOfBoundsException e) {
 					System.out.println("Really? Your favorite pet's name is less than three characters? Fine, I'll use the first one then");
-					randSet.add(pet.charAt(0) % RAND_MAX);
+					randSet.add((pet.charAt(0) % RAND_MAX) + 1);
 				}
-				randSet.add(Math.abs(rand - rand2) % RAND_MAX);
-				randSet.add(act.charAt(act.length()-1) % RAND_MAX);
-				randSet.add((petAge + model) % RAND_MAX);
-				randSet.add((model + lucky) % RAND_MAX);
+				randSet.add((Math.abs(rand - rand2) % RAND_MAX) + 1);
+				randSet.add((act.charAt(act.length()-1) % RAND_MAX) + 1);
+				randSet.add(((petAge + model) % RAND_MAX) + 1);
+				randSet.add(((model + lucky) % RAND_MAX) + 1);
 				
 				//print out numbers
 //				System.out.printf("Lottery numbers: %d, %d, %d, %d, %d  Magic ball: %d\n", randomNums[0], randomNums[1], randomNums[2], randomNums[3], randomNums[4], ball);

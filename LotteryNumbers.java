@@ -22,8 +22,9 @@ public class LotteryNumbers {
 				int rand = promptInt("Enter a random number between 1 and 50:", 1, 50);
 				
 				//create constants for the maximum we want our randomly generated numbers to be
-				int RAND_MAX = 65;
-				int BALL_MAX = 75;
+				//add one so that when we use % later it keeps the number within the range we want
+				int RAND_MAX = 65 + 1;
+				int BALL_MAX = 75 + 1;
 				
 				//generates a random integer between 10 and 20 (or it should, I think, probably)
 				int rand1 = (int)Math.ceil((Math.random() + 1) * 10);
